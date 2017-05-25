@@ -9,7 +9,7 @@
 
 <table class="table table-striped table-bordered">
 	<thead>
-		<tr><th style="text-align: center; background: black; color: white " colspan="3">Produtos Cadastrados</th></tr>
+		<tr><th style="text-align: center; background: black; color: white " colspan="4">Produtos Cadastrados</th></tr>
 	</thead>
 
 	<?php 
@@ -20,7 +20,12 @@
 	<tr>
 		<td><?=$produto['nome']?></td>
 		<td><?=$produto['preco']?></td>
-		<td><a href="remove-produto.php?id=<?=$produto['id']?>" class="text-danger">Remover</a></td>
+		<td><?= substr($produto['descricao'], 0, 40) ?></td>
+		<td><form action="remove-produto.php" method="POST">
+				<input type="hidden" name="id" value="<?=$produto['id']?>"/>
+				<button class="btn btn-danger">Remover</button>
+			</form>
+		</td>
 	</tr>
 
 	<?php endforeach; ?>
